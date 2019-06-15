@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { DocumentService } from 'src/app/services/document.service';
+import { DocumentService } from '../../services/document.service';
 
 @Component({
   selector: 'app-document-list',

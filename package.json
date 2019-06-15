@@ -1,19 +1,21 @@
 {
   "name": "socket-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "license": "ISC",
   "engines": {
     "node": "10.15.3",
     "npm": "6.4.1"
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "concurrently -n \"proxy,server\" -c \"green.bold,yellow.bold\" \"npm run client:start\" \"npm run server:start\" ",
+    "client:start": "cd socket-app && ng serve --open",
+    "server:start": "node socket-server/src/app.js",
+    "build": "cd socket-app && ng build",
+    "test": "cd socket-app && ng test",
+    "lint": "cd socket-app && ng lint",
+    "e2e": "cd socket-app && ng e2e"
   },
-  "license": "ISC",
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.0",
@@ -24,8 +26,10 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "express": "~4.17.1",
     "ngx-socket-io": "~2.1.1",
     "rxjs": "~6.5.2",
+    "socket.io": "~2.2.0",
     "tslib": "~1.10.0",
     "zone.js": "~0.9.1"
   },
@@ -37,7 +41,9 @@
     "@types/node": "~12.0.8",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/socket.io": "^2.1.0",
     "codelyzer": "^5.0.0",
+    "concurrently": "^4.1.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
