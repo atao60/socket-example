@@ -1,0 +1,5 @@
+{
+    "socketIoConfig": {
+        "url": "http://localhost:4444"
+    }
+}
